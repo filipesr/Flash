@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model xmlns="http://ns.adobe.com/Fiber/1.0">
+  <annotation name="ActionScriptGeneration">
+    <item name="FullyQualifyReferences">true</item>
+  </annotation>
+  <service name="TcarService">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">TcarService</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services.tcarservice</item>
+      <item name="Endpoint">gateway.php</item>
+      <item name="Destination">TcarService</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">PHP</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="PHP_RELATIVE_LOCATION">SigCar-debug/services/TcarService.php</item>
+      <item name="PHP_SERVER_ROOT">E:/wamp/www/sigcar</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="PHP_SERVICES_FOLDER">E:/wamp/www/sigcar/SigCar-debug/services</item>
+      <item name="PHP_LOCATION">E:/wamp/www/sigcar/SigCar-debug/services/TcarService.php</item>
+      <item name="LINKED_FILE">TcarService.php</item>
+      <item name="PHP_SERVER_ROOT_URL">http://localhost/sigcar/</item>
+      <item name="ABSOLUTE_ENDPOINT">http://localhost/sigcar/SigCar-debug/gateway.php</item>
+      <item name="PHP_CLASS_NAME">TcarService</item>
+    </annotation>
+    <function name="getAllTcar" return-type="Tcar[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getTcarByID" arguments="itemID:integer" return-type="Tcar">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="createTcar" arguments="item:Tcar" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="updateTcar" arguments="item:Tcar" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="deleteTcar" arguments="itemID:integer" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="count" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getTcar_paged" arguments="startIndex:integer,numItems:integer" return-type="Tcar[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque,opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Tcar" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Tcar</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">TcarService</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="create">createTcar</item>
+      <item name="update">updateTcar</item>
+      <item name="get">getTcarByID</item>
+      <item name="delete">deleteTcar</item>
+      <item name="fillFunc">getAllTcar,getTcar_paged</item>
+      <item name="managingService">TcarService</item>
+    </annotation>
+    <annotation name="getTcarByID">
+      <item name="propertySpecifier">idcar,marca,modelo,ano_fab,ano_mod,chassi,cor,portas,placa</item>
+    </annotation>
+    <annotation name="getAllTcar">
+      <item name="propertySpecifier">idcar,marca,modelo,ano_fab,ano_mod,chassi,cor,portas,placa</item>
+    </annotation>
+    <annotation name="getTcar_paged">
+      <item name="propertySpecifier">idcar,marca,modelo,ano_fab,ano_mod,chassi,cor,portas,placa</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <id name="idcar" type="integer"/>
+    <property name="marca" type="string" required="true"/>
+    <property name="modelo" type="string" required="true"/>
+    <property name="ano_fab" type="integer" required="true"/>
+    <property name="ano_mod" type="integer" required="true"/>
+    <property name="chassi" type="string" required="true"/>
+    <property name="cor" type="string" required="true"/>
+    <property name="portas" type="integer" required="true"/>
+    <property name="placa" type="string" required="true"/>
+  </entity>
+</model>
